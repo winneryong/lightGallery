@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>jQuery lightGallery demo</title>
         <link href="../dist/css/lightgallery.css" rel="stylesheet">
+        <link href="../dist/css/lg-fb-comment-box.css?v=1" rel="stylesheet">
         <style type="text/css">
             body{
                 background-color: #152836
@@ -128,22 +132,41 @@
 
         <div class="demo-gallery">
             <ul id="lightgallery" class="list-unstyled row">
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800" data-src="img/1-1600.jpg" data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800"
+                    data-src="img/1-1600.jpg"
+                    data-sub-html='<div class="fb-comments" data-width="400" data-numposts="5">
+                    <table>
+                        <tr>
+                            <td>证件类型</td>
+                            <td>cert-number</td>
+                        </tr>
+                        <tr>
+                            <td>id card</td>
+                            <td>123456789</td>
+                        </tr>
+                    </table>
+                    </div>'>
                     <a href="">
                         <img class="img-responsive" src="img/thumb-1.jpg">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/2-375.jpg 375, img/2-480.jpg 480, img/2.jpg 800" data-src="img/2-1600.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
+                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/2-375.jpg 375, img/2-480.jpg 480, img/2.jpg 800"
+                    data-src="img/2-1600.jpg"
+                    data-sub-html='<div class="fb-comments" data-width="400" data-numposts="5">2</div>'>
                     <a href="">
                         <img class="img-responsive" src="img/thumb-2.jpg">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/13-375.jpg 375, img/13-480.jpg 480, img/13.jpg 800" data-src="img/13-1600.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
+                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/13-375.jpg 375, img/13-480.jpg 480, img/13.jpg 800"
+                    data-src="img/13-1600.jpg"
+                    data-sub-html='<div class="fb-comments" data-width="400" data-numposts="5">3</div>'>
                     <a href="">
                         <img class="img-responsive" src="img/thumb-3.jpg">
                     </a>
                 </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/4-375.jpg 375, img/4-480.jpg 480, img/4.jpg 800" data-src="img/4-1600.jpg" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
+                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/4-375.jpg 375, img/4-480.jpg 480, img/4.jpg 800"
+                    data-src="img/4-1600.jpg"
+                    data-sub-html='<div class="fb-comments" data-width="400" data-numposts="5">4</div>'>
                     <a href="">
                         <img class="img-responsive" src="img/thumb-4.jpg">
                     </a>
@@ -152,7 +175,21 @@
         </div>
         <script type="text/javascript">
         $(document).ready(function(){
-            $('#lightgallery').lightGallery();
+            var $commentBox = $('#lightgallery');
+            $commentBox.lightGallery({
+                appendSubHtmlTo: '.lg-item',
+                addClass: 'fb-comments',
+                mode: 'lg-fade',
+                download: true,
+                enableDrag: false,
+                enableSwipe: false
+            });
+            $commentBox.on('onAfterSlide.lg', function(event, prevIndex, index) {
+                console.log('caller - ' + index, event);
+                if (!$('.lg-outer .lg-item').eq(index).attr('data-fb')) {
+
+                }
+            });
         });
         </script>
         <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>

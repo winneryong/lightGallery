@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>jQuery lightGallery demo</title>
+        <link href="../dist/css/lightgallery.css" rel="stylesheet">
+        <link href="../dist/css/lg-fb-comment-box.css?v=1" rel="stylesheet">
+        <style type="text/css">
+        </style>
+        <script src="../lib/jquery.min.js"></script>
+    </head>
+    <body class="home">
+        <div>
+            <a id="dynamic" href="javascript:void(0);" >OpenDynamic</a>
+        </div>
+
+        <script type="text/javascript">
+            $('#dynamic').on('click', function() {
+                $(this).lightGallery({
+                    appendSubHtmlTo: '.lg-item',
+                    addClass: 'fb-comments',
+                    mode: 'lg-fade',
+                    download: true,
+                    enableDrag: false,
+                    enableSwipe: false,
+                    dynamic: true,
+                    dynamicEl: [{
+                        src: 'img/1.jpg',
+                        thumb: 'img/thumb-1.jpg',
+                        subHtml: '<div class="fb-comments" data-width="400" data-numposts="5">1</div>'
+                    }, {
+                        src: 'img/2.jpg',
+                        thumb: 'img/thumb-2.jpg',
+                        subHtml: '<div class="fb-comments" data-width="400" data-numposts="5">2</div>'
+                    }, {
+                        src: 'img/3.jpg',
+                        thumb: 'img/thumb-3.jpg',
+                        subHtml: '<div class="fb-comments" data-width="400" data-numposts="5">3</div>'
+                    }, {
+                        src: 'img/4.jpg',
+                        thumb: 'img/thumb-4.jpg',
+                        subHtml: '<div class="fb-comments" data-width="400" data-numposts="5">4</div>'
+                    }, {
+                        iframe: true,
+                        src: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+                    }]
+                })
+            });
+
+
+        </script>
+        <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+        <script src="../dist/js/lightgallery-all.min.js"></script>
+        <script src="../lib/jquery.mousewheel.min.js"></script>
+    </body>
+</html>
